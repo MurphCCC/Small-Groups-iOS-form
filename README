@@ -1,0 +1,91 @@
+/*  This is my first attempt at a working iOS app   */
+
+It has taken me about two weeks or so to get this app this far.  I have never done anything for iOS before and have never really used xcode.
+I have followed several tutorials and lots of trial and error to get to this point.  This app is a pretty basic single page form.  Their is
+very little validation, I am only checking to make sure that the name and email fields are filled out before submitting the form.  I ran into
+several hurdles where the app would crash if the fields were not filled out but I think I have gotten past that by doing some basic if/else
+statements in viewcontroller.swift.
+
+The purpose of this app is to provide our Small Groups ministry with a basic form to fill out for people who are interested in information
+about Small Groups.  I originally built a simple html form with a php/mysql backend.  The issue is that this is designed to be run on an iPad
+at our information both and I did not want to simply run it in Safari, I wanted something that was full screen and something that I could lock
+down.  For this purpose, up until this point we have been using a free app Kiosk Pro Lite which allows you to load a page in Kiosk Mode.
+
+While this was a solution it is not my favorite.  I decided that it would be cool to have something that was actually a native app running on
+the iPad.  My first attempt was just to build a simple webview app, however this didn't really satisfy what I was looking for.  I've been
+looking to get into playing around with iOS apps for a while anyway so this project was a good excuse.  I was also thinking that it would be
+good to have a hardcoded app so as to be able to remove/simplify some of the server side code.
+
+I am using a php file on the backend to capture the form information, enter it into a local MySql database and then send the person an
+automated email containing a link to some more information provided by our Small Groups ministry.  The backend code is pretty straight forward.
+Here is the script that I am using to process the form on the back end
+
+<?php
+
+	define('__ROOT__', dirname(dirname(__FILE__))); //Set our root path
+	require_once(__ROOT__.'/dbconfig.php'); //Database credentials, name,password,host
+
+	require 'vendor/phpmailer/phpmailer/PHPMailerAutoload.php'; //Load our PHPmailer
+
+	$timestamp = date("Y-m-d H:i:s");
+	$phone_number = $_POST['phone'];
+	$name = $_POST['name'];
+	$name = ucwords($name);
+	$firstname = explode(" ", $name);
+	$username = addslashes($name);
+
+	$mail = new PHPMailer;
+	$email = $_POST['email'];
+	$add_user = "INSERT INTO sign_up_form (timestamp, name, email, phone_number) VALUES ('$timestamp', '$name', '$email', '$phone_number')";
+
+
+	if(isset($_POST['email'])) {
+	$small_groups_db->query($add_user); //	Select the small groups db and run the $add_user query
+
+$mail->isSMTP();                                      // Set mailer to use SMTP
+$mail->Host = 'smtp.example.com';  // SMTP Server info removed
+$mail->SMTPAuth = true;                               // Enable SMTP authentication
+$mail->Username = 'mail@church.com';                 // Actual SMTP username removed
+$mail->Password = 'password';                           // Actual SMTP password removed
+$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+$mail->Port = 587;                                    // TCP port to connect to
+
+$mail->setFrom('sendingEmailAddress', 'Calvary Chapel Small Groups Team');  // Actual email removed
+$mail->addAddress($email);     // Add a recipient
+$mail->isHTML(true);                                  // Set email format to HTML
+
+$mail->Subject = 'Calvary Chapel Small Groups information form';
+$mail->Body    = 'Hi ' . $firstname[0] . ',<br /><br /> Thanks so much for your interest in a small group! We need a little bit more information in order to assist you, so please take a few minutes and complete this<a href="#"> form</a>.<br /><br />After you complete the form, we’ll be in touch with you.  We look forward to serving you. If you have any questions at all, please feel free to let us know!<br /><br />Blessings,<br /><br />Small Groups Team<br />Calvary Chapel Chattanooga';
+$mail->AltBody = 'If you are not able to receive HTML formatted emails, please fill out the form at this address to provide us with more information.  #';
+
+
+if(!$mail->send()) {
+    echo 'Message could not be sent.';
+    echo 'Mailer Error: ' . $mail->ErrorInfo;
+} else {
+    echo 'Thank you ' . $firstname[0] . '! <br />Please check your email for a link';
+}
+}
+?>
+
+
+To send the POST request I am using the Alamofire framework for iOS.
+To include this in the project I simply created a Podfile with the following contents:
+
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '9.3'
+use_frameworks!
+
+target 'test form' do
+    pod 'Alamofire', '~> 3.4'
+end
+
+To send a POST/GET request using Alamofire is pretty straightforward, simply:
+
+Alamofire.request(.POST, "http://192.168.11.88/small_groups/mail.php", parameters: parameters)
+
+where parameters can be hardcoded, or be contained within an array.
+
+
+My next goal for this project is to use some sort of connector/framework to process the form and if possible send the email from the app removing any need for
+server side code. 
