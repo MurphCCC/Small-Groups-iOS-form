@@ -1,12 +1,25 @@
 PODS:
   - Alamofire (3.4.1)
+  - AlamofireXmlToObjects (1.2.0):
+    - Alamofire
+    - EVReflection
+    - XMLDictionary
+  - EVReflection (2.43.0)
+  - MySqlSwiftNative (1.0.10)
+  - XMLDictionary (1.4)
 
 DEPENDENCIES:
   - Alamofire (~> 3.4)
+  - AlamofireXmlToObjects
+  - MySqlSwiftNative (~> 1.0.10)
 
 SPEC CHECKSUMS:
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
+  AlamofireXmlToObjects: 350a3d24e24fe836904598d276080d9519f978cf
+  EVReflection: a65a68abd7f9eff2d8b1cea7d6c684dd3254f58f
+  MySqlSwiftNative: 25d6d8c5db9d114a9b839aa5cb7de6d1f460f596
+  XMLDictionary: f9f51601ba76678b594ab485f2b00ec1fed23724
 
-PODFILE CHECKSUM: b2d43dbdc4d7005485d31bbf27bf669d6e4cc818
+PODFILE CHECKSUM: db2e269580015730e824a648e58d7fcb828f7604
 
 COCOAPODS: 1.0.1

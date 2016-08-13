@@ -9,7 +9,27 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>AlamofireXmlToObjects.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>EVReflection.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>MySqlSwiftNative.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-test form.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>XMLDictionary.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -17,12 +37,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>174C631955BCFD5E02E5061731472645</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>74A21ADCA8DA10181F9C2DE72B19E813</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>ABCFAD3CC714A0EC2FA6817A437A7039</key>
+		<key>A59043051A1656036827CC033B7F3F68</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CCF23F1823862AA0CD0B5BEE7627D4F8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E3BED705313160D9E983A2704E83FE9F</key>
 		<dict>
 			<key>primary</key>
 			<true/>

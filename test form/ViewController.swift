@@ -8,7 +8,10 @@
 
 import UIKit
 import Alamofire
-import QuartzCore
+import AlamofireXmlToObjects
+import EVReflection
+
+
 
 
 class ViewController: UIViewController {
@@ -23,7 +26,7 @@ class ViewController: UIViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		// Do any additional setup after loading the view, typically from a nib.		
+		// Do any additional setup after loading the view, typically from a nib.
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -69,6 +72,7 @@ class ViewController: UIViewController {
 		centerText()
 	}
 
+	
 	@IBAction func submit(sender: AnyObject) {
 
 
@@ -78,6 +82,7 @@ class ViewController: UIViewController {
 			
 		let emailValue = emailField.text!
 		let phoneValue = phoneField.text!
+		
 			
 		let firstName = String(nameValueSplit.first!)
 			
@@ -98,12 +103,15 @@ class ViewController: UIViewController {
 						print("JSON: \(JSON)")
 					}
 			}
+			
+			
 			view.endEditing(true)
 			scrollView.setContentOffset(CGPointMake(0, 0), animated: true)
 
 			
 			statusMessage.text = "Thanks \(firstName)!  Please check your email\n for further information!"
 			centerText()
+			
 			
 			let triggerTime = (Int64(NSEC_PER_SEC) * 10)
 			dispatch_after(dispatch_time(DISPATCH_TIME_NOW, triggerTime), dispatch_get_main_queue(), { () -> Void in
@@ -117,8 +125,33 @@ class ViewController: UIViewController {
 		statusMessage.text = "Please Fill out the information above"
 		centerText()
 		}
-		}
+		
+	}
 
 }
+
+class WeatherResponse: EVObject {
+	var location: String?
+	var three_day_forecast: [Forecast] = [Forecast]()
+}
+
+class Forecast: EVObject {
+	var day: String?
+	var temperature: NSNumber?
+	var conditions: String?
+}
+
+class AlamofireXmlToObjectsTests {
+	func testResponseObject() {
+		let URL = "https://raw.githubusercontent.com/evermeer/AlamofireXmlToObjects/master/AlamofireXmlToObjectsTests/sample_xml"
+		Alamofire.request(.GET, URL, parameters: nil)
+			.responseObject { (response: Result< WeatherResponse, NSError>) in
+				if let result = response.value {
+					// That was all... You now have a WeatherResponse object with data
+				}
+		}
+	}
+}
+
 
 

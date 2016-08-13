@@ -71,8 +71,13 @@
                                             <constraint firstAttribute="width" constant="488" id="i0f-fu-Fyy"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nt5-Vy-Pfi">
+                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nt5-Vy-Pfi">
                                         <rect key="frame" x="694" y="431" width="130" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="130" id="pwh-4z-iXY"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="3" minY="0.0" maxX="0.0" maxY="4"/>
+                                        <size key="titleShadowOffset" width="5" height="8"/>
                                         <state key="normal" backgroundImage="submit_button.png"/>
                                         <connections>
                                             <action selector="submit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RdD-6q-AN3"/>
@@ -92,19 +97,34 @@
                                     <constraint firstItem="Q6h-Lc-H86" firstAttribute="top" secondItem="Y3z-rW-5Re" secondAttribute="bottom" constant="8" symbolic="YES" id="U0D-Fr-AYo"/>
                                     <constraint firstItem="13z-Ng-z52" firstAttribute="bottom" secondItem="Nt5-Vy-Pfi" secondAttribute="bottom" id="VB4-Gi-M9L"/>
                                     <constraint firstItem="Q6h-Lc-H86" firstAttribute="centerX" secondItem="qOb-KU-erp" secondAttribute="centerX" id="ZAe-Wq-NPr"/>
+                                    <constraint firstItem="Nt5-Vy-Pfi" firstAttribute="top" secondItem="qOb-KU-erp" secondAttribute="top" constant="431" id="ZCW-rs-IX1"/>
                                     <constraint firstAttribute="trailing" secondItem="MJI-Xw-XOf" secondAttribute="trailing" constant="200" id="aSf-A3-uhG"/>
                                     <constraint firstItem="Q6h-Lc-H86" firstAttribute="leading" secondItem="crg-ug-qUe" secondAttribute="leading" id="amw-MM-giq"/>
                                     <constraint firstAttribute="trailing" secondItem="Q6h-Lc-H86" secondAttribute="trailing" constant="200" id="fmU-sX-NnJ"/>
                                     <constraint firstItem="13z-Ng-z52" firstAttribute="top" secondItem="crg-ug-qUe" secondAttribute="bottom" constant="49" id="gKJ-M2-mmE"/>
+                                    <constraint firstItem="Nt5-Vy-Pfi" firstAttribute="bottom" secondItem="13z-Ng-z52" secondAttribute="bottom" id="gPu-39-XDm"/>
+                                    <constraint firstAttribute="trailing" secondItem="Nt5-Vy-Pfi" secondAttribute="trailing" constant="200" id="gaD-Oe-mPw"/>
                                     <constraint firstItem="MJI-Xw-XOf" firstAttribute="centerX" secondItem="qOb-KU-erp" secondAttribute="centerX" id="hYc-xD-MFD"/>
                                     <constraint firstItem="Q6h-Lc-H86" firstAttribute="centerX" secondItem="MJI-Xw-XOf" secondAttribute="centerX" id="iKH-EJ-leg"/>
+                                    <constraint firstItem="Nt5-Vy-Pfi" firstAttribute="top" secondItem="13z-Ng-z52" secondAttribute="top" id="jQk-k9-QzL"/>
                                     <constraint firstAttribute="bottom" secondItem="MJI-Xw-XOf" secondAttribute="bottom" constant="43" id="lI5-Rb-KOj"/>
                                     <constraint firstItem="Y3z-rW-5Re" firstAttribute="leading" secondItem="qOb-KU-erp" secondAttribute="leading" constant="266" id="mVn-4P-7vg"/>
                                     <constraint firstItem="13z-Ng-z52" firstAttribute="top" secondItem="Nt5-Vy-Pfi" secondAttribute="top" id="oVd-CV-s4h"/>
                                     <constraint firstItem="Q6h-Lc-H86" firstAttribute="top" secondItem="qOb-KU-erp" secondAttribute="top" constant="216" id="q1P-NQ-EzW"/>
                                     <constraint firstItem="crg-ug-qUe" firstAttribute="trailing" secondItem="Nt5-Vy-Pfi" secondAttribute="trailing" id="qLT-gT-4Yi"/>
                                     <constraint firstAttribute="bottom" secondItem="Q6h-Lc-H86" secondAttribute="bottom" constant="492" id="sxg-oS-xhl"/>
+                                    <constraint firstAttribute="trailing" secondItem="Nt5-Vy-Pfi" secondAttribute="trailing" constant="200" id="tas-yT-WzX"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="qLT-gT-4Yi"/>
+                                        <exclude reference="VB4-Gi-M9L"/>
+                                        <exclude reference="oVd-CV-s4h"/>
+                                        <exclude reference="0VJ-XO-u8g"/>
+                                        <exclude reference="P9l-Nv-oRn"/>
+                                        <exclude reference="gaD-Oe-mPw"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="9Qu-93-PbJ"/>
                                 </connections>
