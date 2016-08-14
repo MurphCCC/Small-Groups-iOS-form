@@ -26,12 +26,16 @@
                                         <accessibility key="accessibilityConfiguration">
                                             <accessibilityTraits key="traits" notEnabled="YES"/>
                                         </accessibility>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="123" id="57T-Sj-tZV"/>
                                             <constraint firstAttribute="width" constant="624" id="fMQ-B7-QZG"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="8BG-LA-b26" appends="YES" id="7bV-3L-plf"/>
+                                        </connections>
                                     </textView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please enter your name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Q6h-Lc-H86">
                                         <rect key="frame" x="200" y="216" width="624" height="60"/>
@@ -81,6 +85,12 @@
                                         <state key="normal" backgroundImage="submit_button.png"/>
                                         <connections>
                                             <action selector="submit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RdD-6q-AN3"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q1t-Xw-syZ">
+                                        <rect key="frame" x="266" y="44" width="488" height="152"/>
+                                        <connections>
+                                            <segue destination="0Fk-yL-hUP" kind="show" id="48R-6j-t14"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -138,6 +148,7 @@
                             <constraint firstItem="qOb-KU-erp" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="uDj-h7-7xX"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="lnT-Sc-EXF"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
@@ -150,12 +161,81 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="left" id="8BG-LA-b26">
+                    <connections>
+                        <segue destination="0Fk-yL-hUP" kind="show" id="dTV-J3-1CH"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="445" y="463"/>
+            <point key="canvasLocation" x="2129" y="479"/>
+        </scene>
+        <!--dashBoardViewController-->
+        <scene sceneID="o3n-Ji-W8B">
+            <objects>
+                <viewController title="dashBoardViewController" id="0Fk-yL-hUP" customClass="dashBoardViewController" customModule="test_form" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YLJ-Ne-foU"/>
+                        <viewControllerLayoutGuide type="bottom" id="oU6-W7-Eau"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="O8R-wF-Cjs">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gpe-q9-DYu">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="I7C-xL-fVa" appends="YES" id="BT3-5C-3j1"/>
+                                </connections>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Gpe-q9-DYu" firstAttribute="height" secondItem="O8R-wF-Cjs" secondAttribute="height" id="3w9-pz-0yg"/>
+                            <constraint firstItem="Gpe-q9-DYu" firstAttribute="centerX" secondItem="O8R-wF-Cjs" secondAttribute="centerX" id="5N1-af-J5I"/>
+                            <constraint firstItem="Gpe-q9-DYu" firstAttribute="width" secondItem="O8R-wF-Cjs" secondAttribute="width" id="f1P-mH-BY1"/>
+                            <constraint firstItem="Gpe-q9-DYu" firstAttribute="centerY" secondItem="O8R-wF-Cjs" secondAttribute="centerY" id="jWl-XJ-bej"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="Gpe-q9-DYu" id="7UC-oe-Tis"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v8f-fN-Ck9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="left" id="I7C-xL-fVa">
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" id="vhD-fR-blh"/>
+                    </connections>
+                </swipeGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="3330" y="445"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="eSj-8T-eC6">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="V7H-1z-5CN" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KG2-5v-bSS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="zfK-vB-54u"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H4c-mc-BJi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1121" y="455"/>
         </scene>
     </scenes>
     <resources>
         <image name="smallgroupslogo.png" width="600" height="270"/>
         <image name="submit_button.png" width="732" height="250"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="48R-6j-t14"/>
+        <segue reference="vhD-fR-blh"/>
+    </inferredMetricsTieBreakers>
 </document>
